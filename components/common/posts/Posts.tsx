@@ -379,7 +379,7 @@ export const Posts = ({ post, setIsAction, isAction, isSuperAction }: any) => {
                       <span>{post.sellerName}</span>
                     </p>
 
-                    {post.sellerId !== user._id && !post.isBuyed && (
+                    {post.sellerId !== user._id! && !post.isBuyed && (
                       <Button
                         className="m-4 ml-0"
                         // onClick={buyAction}

@@ -18,6 +18,7 @@ export const Menu = () => {
     if (user) {
       localStorage.removeItem('user')
     }
+    window.location.reload()
   }
 
   return (
@@ -84,18 +85,23 @@ export const Menu = () => {
             </li>
           </Link>
 
-          <li
-            className="mb-6 list-none rounded-3xl p-3 font-bold 
+          <Link href="/">
+            <li
+              className="mb-6 list-none rounded-3xl p-3 font-bold 
           transition-all
           hover:bg-gray-300 hover:ease-in"
-          >
-            <a href="/" className="flex items-center text-inherit no-underline">
-              <Logout />
-              <span className=" ml-2 hidden  lg:inline" onClick={handleLogout}>
-                ログアウト
-              </span>
-            </a>
-          </li>
+            >
+              <a className="flex items-center text-inherit no-underline">
+                <Logout />
+                <span
+                  className=" ml-2 hidden  lg:inline"
+                  onClick={handleLogout}
+                >
+                  ログアウト
+                </span>
+              </a>
+            </li>
+          </Link>
         </ul>
       </div>
     </div>

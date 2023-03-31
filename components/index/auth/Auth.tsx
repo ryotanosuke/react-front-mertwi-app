@@ -36,6 +36,8 @@ export const Auth = () => {
   const [error, setError] = useState('')
   const { dispatch, user } = useContext(AuthContext)
 
+  const doLogin = useLogin
+
   const form = useForm<AuthForm>({
     schema: yupResolver(schema),
     initialValues: {
@@ -48,7 +50,7 @@ export const Auth = () => {
   })
 
   // サブミット時に実行
-  const handleSubmit = async () => {
+  const useHandleSubmit = async () => {
     const userName = `${form.values.firstName} ${form.values.lastName}`
 
     const AuthValues = {
@@ -67,7 +69,7 @@ export const Auth = () => {
             AuthValues
           )
           .then((response) => {
-            useLogin(
+            doLogin(
               {
                 email: response.data.email,
                 password: response.data.password,
@@ -87,7 +89,7 @@ export const Auth = () => {
             AuthValues
           )
           .then((respanse) => {
-            useLogin(
+            doLogin(
               {
                 email: respanse.data.email,
                 password: respanse.data.password,
@@ -119,7 +121,7 @@ export const Auth = () => {
           )}
           <form
             //form.onSubmitでもう一度囲む
-            onSubmit={form.onSubmit(handleSubmit)}
+            onSubmit={form.onSubmit(useHandleSubmit)}
             style={{ width: 380 }}
           >
             {isRegister && (

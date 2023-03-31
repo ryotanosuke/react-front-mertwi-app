@@ -3,7 +3,7 @@ import { Header } from '../components/common/layout/Header'
 import { Menu } from '../components/common/menu/Menu'
 import { PurchasePoint } from '../components/points/PurchasePoint'
 
-const points = () => {
+const usePoints = () => {
   const [isSuperAction, setSuperIsAction] = useState(false)
   return (
     <Header>
@@ -18,4 +18,4 @@ const points = () => {
   )
 }
 
-export default points
+export default usePoints

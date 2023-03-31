@@ -13,6 +13,7 @@ export const Header = ({ children, title = 'Mestwi' }) => {
     if (user) {
       localStorage.removeItem('user')
     }
+    window.location.reload()
   }
 
   return (
@@ -64,14 +65,16 @@ export const Header = ({ children, title = 'Mestwi' }) => {
               </a>
             </Link>
 
-            <a href="/" className="flex items-center text-inherit no-underline">
-              <span
-                className="pl-10 font-semibold hover:underline"
-                onClick={handleLogout}
-              >
-                ログアウト
-              </span>
-            </a>
+            <Link href={`/`}>
+              <a className="flex items-center text-inherit no-underline">
+                <span
+                  className="pl-10 font-semibold hover:underline"
+                  onClick={handleLogout}
+                >
+                  ログアウト
+                </span>
+              </a>
+            </Link>
           </div>
         </div>
       </header>

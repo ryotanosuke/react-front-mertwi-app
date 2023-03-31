@@ -4,7 +4,7 @@ import { Menu } from '../../components/common/menu/Menu'
 import { Userbar } from '../../components/common/userbar/Userbar'
 import { Followings } from '../../components/follow/Followings'
 
-const follow = () => {
+const useFollow = () => {
   const router = useRouter()
   const userId = router.query.userId
   const isFollow = router.query.isFollowing
@@ -34,4 +34,4 @@ const follow = () => {
   )
 }
 
-export default follow
+export default useFollow
