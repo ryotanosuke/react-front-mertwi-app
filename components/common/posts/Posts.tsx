@@ -86,8 +86,6 @@ export const Posts = ({ post, setIsAction, isAction, isSuperAction }: any) => {
   })
 
   useEffect(() => {
-    console.log('環境変数=======' + process.env.NEXT_PUBLIC_FOLDER)
-
     if (post) {
       try {
         const fetchPostUser = async () => {

@@ -215,10 +215,15 @@ export const Timeline = ({ isSuperAction, setIsSuperAction }: any) => {
               <h4>{user && user.userName}</h4>
             </div>
 
-            <form
+            {/* <form
               onSubmit={form.onSubmit((e) => {
                 handleSubmit(e)
               })}
+            > */}
+            <form
+              onSubmit={(e) => {
+                handleSubmit(e)
+              }}
             >
               <Textarea
                 className="my-12 border border-x-0 
