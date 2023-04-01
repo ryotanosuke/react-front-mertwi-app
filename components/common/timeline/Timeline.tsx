@@ -8,7 +8,13 @@ import {
 } from '@mantine/core'
 import { useForm } from '@mantine/form'
 import axios from 'axios'
-import React, { useContext, useEffect, useRef, useState } from 'react'
+import React, {
+  useContext,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from 'react'
 import { ExhibitForm } from './ExhibitForm'
 import { Posts } from '../posts/Posts'
 import { ScrollArea } from '@mantine/core'
@@ -39,9 +45,10 @@ export const Timeline = ({ isSuperAction, setIsSuperAction }: any) => {
     img: '',
   })
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    console.log(posts)
     setVisible((v) => !v)
-    if (user) {
+    if (user!) {
       const fetchPosts = async () => {
         await axios
           .get(
@@ -147,6 +154,8 @@ export const Timeline = ({ isSuperAction, setIsSuperAction }: any) => {
   const onFileChange = (e: any) => {
     setFile(e.target.files[0])
   }
+
+  console.log(posts)
 
   return (
     <div className="">
@@ -285,22 +294,23 @@ export const Timeline = ({ isSuperAction, setIsSuperAction }: any) => {
           </div>
 
           <div className="w-full">
-            <LoadingOverlay visible={visible} />
+            {/* <LoadingOverlay visible={visible} /> */}
             <ul className="m-0  w-full list-none p-0">
-              {posts.map((post, key) => (
-                <li
-                  className="m-12 rounded-3xl   bg-white p-12 shadow-sm shadow-gray-300"
-                  key={key}
-                >
-                  <Posts
-                    post={post}
-                    isAction={isAction}
-                    setIsAction={setIsAction}
-                    isSuperAction={isSuperAction}
-                    setIsSuperAction={setIsSuperAction}
-                  />
-                </li>
-              ))}
+              {posts &&
+                posts.map((post, key) => (
+                  <li
+                    className="m-12 rounded-3xl   bg-white p-12 shadow-sm shadow-gray-300"
+                    key={key}
+                  >
+                    <Posts
+                      post={post}
+                      isAction={isAction}
+                      setIsAction={setIsAction}
+                      isSuperAction={isSuperAction}
+                      setIsSuperAction={setIsSuperAction}
+                    />
+                  </li>
+                ))}
             </ul>
           </div>
         </ScrollArea>

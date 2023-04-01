@@ -396,11 +396,13 @@ export const Posts = ({ post, setIsAction, isAction, isSuperAction }: any) => {
               <div>
                 <div className="">
                   <span className="">{post.desc}</span>
-                  <img
-                    className="mt-6 max-h-96 w-full object-contain"
-                    src={process.env.NEXT_PUBLIC_FOLDER + post.img}
-                    alt=""
-                  />
+                  {post.img && (
+                    <img
+                      className="mt-6 max-h-96 w-full object-contain"
+                      src={process.env.NEXT_PUBLIC_FOLDER + post.img}
+                      alt=""
+                    />
+                  )}
                 </div>
               </div>
             )}

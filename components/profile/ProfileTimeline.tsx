@@ -36,9 +36,11 @@ export const ProfileTimeline = ({ isSuperAction, setIsSuperAction }: any) => {
     if (userId) {
       const fetchPosts = async () => {
         try {
-          // 最新のuser情報をフェッチ（ ログインユーザーを含む ）
           await axios
-            .get(`${process.env.NEXT_PUBLIC_PUBLIC_SERVER}/api/users/${userId}`)
+            .get(
+              // 最新のuser情報をフェッチ（ ログインユーザーを含む ）
+              `${process.env.NEXT_PUBLIC_PUBLIC_SERVER}/api/users/${userId}`
+            )
             .then((response) => {
               setProfileUser(response.data)
               setFollowings(response.data.followings.length)
